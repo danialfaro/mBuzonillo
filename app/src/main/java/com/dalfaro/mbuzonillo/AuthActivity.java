@@ -78,7 +78,6 @@ public class AuthActivity extends AppCompatActivity {
 
     private void setup() {
 
-
         String title = "Autentificacion";
 
         TextView textEmail = findViewById(R.id.editTextEmail);
