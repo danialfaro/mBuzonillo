@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#00FFFFFF"
+        android:background="@null"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,23 +19,26 @@
         <TextView
             android:id="@+id/textView"
             style="@style/titulos_principales"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Historial de paquetes" />
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="18dp"
+            android:text="Paquetes" />
 
         <TextView
             android:id="@+id/textView2"
             style="@style/titulo_secundario"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginBottom="18dp"
             android:text="Paquetes recibidos en los ultimos 30 dias" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#00FFFFFF" />
+            android:background="@null" />
     </LinearLayout>
 
 

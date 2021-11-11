@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -69,7 +70,7 @@ public class AdaptadorPaquetes extends RecyclerView.Adapter<AdaptadorPaquetes.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView nombre, fecha;
-        CardView cv;
+        LinearLayout cv;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

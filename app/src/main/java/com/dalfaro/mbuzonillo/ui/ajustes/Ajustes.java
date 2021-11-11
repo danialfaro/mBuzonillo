@@ -7,13 +7,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -72,6 +75,8 @@ public class Ajustes extends Fragment {
                     getActivity().finish();
                 }));
 
+        cerrarSesion.setBackgroundColor(Color.parseColor("#547FA1"));
+
         //Click
 
         TextView clidioma = (TextView) view.findViewById(R.id.idioma);
@@ -124,6 +129,9 @@ public class Ajustes extends Fragment {
             }
         });
 
+
+        ImageView image = view.findViewById(R.id.imageView2);
+        image.setAnimation(AnimationUtils.loadAnimation(getContext(),R.anim.anim2));
 
 
         return view;

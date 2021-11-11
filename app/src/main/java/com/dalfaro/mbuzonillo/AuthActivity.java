@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -77,7 +78,6 @@ public class AuthActivity extends AppCompatActivity {
 
     private void setup() {
 
-
         String title = "Autentificacion";
 
         TextView textEmail = findViewById(R.id.editTextEmail);
@@ -127,7 +127,10 @@ public class AuthActivity extends AppCompatActivity {
             startActivityForResult(googleSignInClient.getSignInIntent(), GOOGLE_SIGN_IN);
         });
 
-
+        //Background buttons
+        googleButton.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        signUpButton.setBackgroundColor(Color.parseColor("#547FA1"));
+        loginButton.setBackgroundColor(Color.parseColor("#547FA1"));
 
     }
 
