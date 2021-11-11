@@ -25,30 +25,15 @@
                 app:layout_constraintTop_toTopOf="parent">
 
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/appCompatImageView"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="50dp"
-                    android:src="@drawable/ic_baseline_arrow_back_ios_24"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                </androidx.appcompat.widget.AppCompatImageView>
-
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="80dp"
-                    android:text="Paquete 1"
-                    android:textColor="#000000"
-                    android:textColorHint="#000000"
-                    android:textSize="25dp"
+                    android:text="Paquete"
+                    style="@style/titulos_principales"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/appCompatImageView"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -116,7 +101,7 @@
                         android:id="@+id/textView16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="XXXXXXXXX"
+                        android:text="Ai78491hn"
                         android:textColor="#000000"
                         android:textSize="15dp"
                         app:layout_constraintBottom_toTopOf="@+id/textView20"

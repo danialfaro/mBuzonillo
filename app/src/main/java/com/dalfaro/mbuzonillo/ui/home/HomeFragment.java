@@ -1,21 +1,19 @@
 package com.dalfaro.mbuzonillo.ui.home;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.dalfaro.mbuzonillo.MainActivity;
 import com.dalfaro.mbuzonillo.R;
 import com.dalfaro.mbuzonillo.databinding.FragmentHomeBinding;
 import com.dalfaro.mbuzonillo.ui.tabs.Tab1;
@@ -29,6 +27,8 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
+
+    ImageView imageViewBuzon;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -51,8 +51,31 @@ public class HomeFragment extends Fragment {
                 }
         ).attach();
 
+        imageViewBuzon = root.findViewById(R.id.imageViewBuzon);
+        imageViewBuzon.post(new Runnable() {
+            @Override
+            public void run() {
+                startImageAnimation();
+            }
+        });
+
         return root;
     }
+
+    private void startImageAnimation() {
+        AnimatorSet animSet = new AnimatorSet();
+        animSet.playTogether(
+                //ObjectAnimator.ofFloat(imageViewBuzon, "translationX",-(imageViewBuzon.getWidth()), 0),
+                ObjectAnimator.ofFloat(imageViewBuzon, "alpha", 0, 1),
+                ObjectAnimator.ofFloat(imageViewBuzon, "scaleX", 0, 1),
+        ObjectAnimator.ofFloat(imageViewBuzon, "scaleY", 0, 1)
+        );
+
+
+        animSet.setDuration(600);
+        animSet.start();
+    }
+
 
     //Tabs Adapter
     public class MiPagerAdapter extends FragmentStateAdapter {

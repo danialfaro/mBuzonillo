@@ -1,64 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cv"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#00FFFFFF">
+    android:layout_marginBottom="12dp"
+    android:background="#166392B6"
+    android:orientation="horizontal">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/infoPaquete"
+    <ImageView
+        android:id="@+id/imagen_paquete"
+        android:layout_width="76dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        app:srcCompat="@drawable/boxicon" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="#33C0E3FF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
-
-        <ImageView
-            android:id="@+id/imagen_paquete"
-            android:layout_width="76dp"
-            android:layout_height="70dp"
-            android:layout_marginStart="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/boxicon" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/nombre_paquete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Amazon Cable Tipo C X1"
-            app:layout_constraintEnd_toStartOf="@+id/imageFilterView2"
-            app:layout_constraintStart_toEndOf="@+id/imagen_paquete"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="Amazon Cable Tipo C X1" />
 
         <TextView
             android:id="@+id/fecha_paquete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="14/10/2021"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/nombre_paquete"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/nombre_paquete"
-            app:layout_constraintTop_toBottomOf="@+id/nombre_paquete"
-            app:layout_constraintVertical_bias="0.272" />
+            android:text="14/10/2021" />
+    </LinearLayout>
 
-        <androidx.constraintlayout.utils.widget.ImageFilterView
-            android:id="@+id/imageFilterView2"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginEnd="30dp"
-            android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/imageFilterView2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="30dp"
+        android:src="@drawable/ic_baseline_arrow_forward_ios_24">
 
-        </androidx.constraintlayout.utils.widget.ImageFilterView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.utils.widget.ImageFilterView>
+
+</LinearLayout>
