@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whiteTransparent">
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/datos_sensores"
+        style="@style/titulos_principales"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.050000012" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/titulo_secundario"
+        android:text="@string/info_datos_sensores"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView6"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        tools:layout_editor_absoluteX="-16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayoutPuerta"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="0dp"
+                android:background="#16547FA1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+                <ImageView
+                    android:id="@+id/image_puerta"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/puerta_abierta" />
+
+                <TextView
+                    android:id="@+id/name_puerta_automatica"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/puerta_automatica"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_puerta"
+                    app:layout_constraintStart_toEndOf="@+id/image_puerta"
+                    app:layout_constraintTop_toTopOf="@+id/image_puerta"
+                    app:layout_constraintVertical_bias="0.20999998" />
+
+                <TextView
+                    android:id="@+id/fecha_puerta_automatica"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="06/10/2021"
+                    app:layout_constraintStart_toEndOf="@+id/image_puerta"
+                    app:layout_constraintTop_toBottomOf="@+id/name_puerta_automatica" />
+
+                <TextView
+                    android:id="@+id/puerta_abierta_cerrada"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Abierta"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.84"
+                    app:layout_constraintStart_toEndOf="@+id/image_puerta"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayoutPeso"
+                android:layout_width="409dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:background="#16547FA1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayoutPuerta">
+
+                <ImageView
+                    android:id="@+id/image_peso"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/sensor_peso" />
+
+                <TextView
+                    android:id="@+id/name_sensor_peso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/sensor_peso"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_peso"
+                    app:layout_constraintStart_toEndOf="@+id/image_peso"
+                    app:layout_constraintTop_toTopOf="@+id/image_peso"
+                    app:layout_constraintVertical_bias="0.20999998" />
+
+                <TextView
+                    android:id="@+id/fecha_sensor_peso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="06/10/2021"
+                    app:layout_constraintStart_toEndOf="@+id/image_peso"
+                    app:layout_constraintTop_toBottomOf="@+id/name_sensor_peso" />
+
+                <TextView
+                    android:id="@+id/peso_kg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5 KG"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.822"
+                    app:layout_constraintStart_toEndOf="@+id/image_peso"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.508" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayoutCamara"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:background="#16547FA1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayoutPuerta">
+
+                <ImageView
+                    android:id="@+id/image_camara"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/camara1" />
+
+                <TextView
+                    android:id="@+id/name_camara"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/camaras"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_camara"
+                    app:layout_constraintStart_toEndOf="@+id/image_camara"
+                    app:layout_constraintTop_toTopOf="@+id/image_camara"
+                    app:layout_constraintVertical_bias="0.20999998" />
+
+                <TextView
+                    android:id="@+id/fecha_camara"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="06/10/2021"
+                    app:layout_constraintStart_toEndOf="@+id/image_camara"
+                    app:layout_constraintTop_toBottomOf="@+id/name_camara" />
+
+                <ImageView
+                    android:id="@+id/image_cambiar_camara"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.84"
+                    app:layout_constraintStart_toEndOf="@+id/image_camara"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/sensor_camara" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayoutIluminacion"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:background="#16547FA1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayoutPuerta">
+
+                <ImageView
+                    android:id="@+id/image_iluminacion"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/sensor_luz" />
+
+                <TextView
+                    android:id="@+id/name_sensor_iluminacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/iluminacion"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_iluminacion"
+                    app:layout_constraintStart_toEndOf="@+id/image_iluminacion"
+                    app:layout_constraintTop_toTopOf="@+id/image_iluminacion"
+                    app:layout_constraintVertical_bias="0.20999998" />
+
+                <TextView
+                    android:id="@+id/fecha_sensor_iluminacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="06/10/2021"
+                    app:layout_constraintStart_toEndOf="@+id/image_iluminacion"
+                    app:layout_constraintTop_toBottomOf="@+id/name_sensor_iluminacion" />
+
+                <TextView
+                    android:id="@+id/iluminacion_encendido_apagado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Encendido"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.84"
+                    app:layout_constraintStart_toEndOf="@+id/image_iluminacion"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="84dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

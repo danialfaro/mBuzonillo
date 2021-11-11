@@ -1,0 +1,100 @@
+{
+  "project_info": {
+    "project_number": "203545564317",
+    "project_id": "buzonillo",
+    "storage_bucket": "buzonillo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203545564317:android:90d49c6d55e010f8ce3074",
+        "android_client_info": {
+          "package_name": "com.dalfaro.buzonillo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "203545564317-f4t64jbobjkd4uu8thgpbau9tvgeml3q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dalfaro.buzonillo",
+            "certificate_hash": "ebbcbdf3ba2f7a7991661593e3628f645e1c6333"
+          }
+        },
+        {
+          "client_id": "203545564317-oivm5fajjopfnh13bgcpcidc5gafp4dc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dalfaro.buzonillo",
+            "certificate_hash": "45533ef2cb78f77f96ec486a368b19373614c2c2"
+          }
+        },
+        {
+          "client_id": "203545564317-sc8rpbui3mhl5qkda0pfb9it3cfc91eu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dalfaro.buzonillo",
+            "certificate_hash": "53ad3b184f42d9f47f32e80c6ca9f14d26d733fb"
+          }
+        },
+        {
+          "client_id": "203545564317-tjhtotmsris4bthmk4gq97hmuq8uvbc4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dalfaro.buzonillo",
+            "certificate_hash": "047e51576f6d083aee6a11ec9ff0c4bf6fb4b331"
+          }
+        },
+        {
+          "client_id": "203545564317-b40mcsue8kak4jo2bmbhf15bu97vpmkd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRASOnv9gvcD-SKtEpxMaAMfZfHeHGcL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "203545564317-b40mcsue8kak4jo2bmbhf15bu97vpmkd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203545564317:android:3210cdd3b982ec86ce3074",
+        "android_client_info": {
+          "package_name": "com.dalfaro.mbuzonillo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "203545564317-b40mcsue8kak4jo2bmbhf15bu97vpmkd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRASOnv9gvcD-SKtEpxMaAMfZfHeHGcL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "203545564317-b40mcsue8kak4jo2bmbhf15bu97vpmkd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

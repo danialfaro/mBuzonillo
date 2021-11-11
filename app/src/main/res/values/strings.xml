@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">BUZöNillo</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="language">Language</string>
+
+    <!-- Buzonillo -->
+    <string name="puerta_automatica">Puerta Automática</string>
+    <string name="sensor_peso">Sensor de Peso</string>
+    <string name="camaras">Cámaras</string>
+    <string name="iluminacion">Iluminación</string>
+    <string name="estado">Estado</string>
+    <string name="video_streaming">Video en streaming de las camaras</string>
+    <string name="datos_sensores">Datos Sensores</string>
+    <string name="info_datos_sensores">Datos actualizados en tiempo real</string>
+    <string name="tema">Tema</string>
+    <string name="idioma">Idioma</string>
+    <string name="ajustes">Ajustes</string>
+</resources>

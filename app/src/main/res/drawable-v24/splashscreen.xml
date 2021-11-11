@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@color/white"/>
+
+    <!-- <item>
+        <bitmap
+            android:src="@drawable/bar"
+            android:gravity="center">
+        </bitmap>
+    </item> -->
+
+    <item
+        android:drawable="@drawable/buzonillo_icon"
+        android:gravity="center"
+        android:width="100dp"
+        android:height="100dp"/>
+
+</layer-list>

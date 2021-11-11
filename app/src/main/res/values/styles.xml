@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="titulos_principales" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#547FA1</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/roboto_light</item>
+    </style>
+
+    <style name="titulo_secundario">
+        <item name="android:textColor">#98B2C7</item>
+        <item name="android:textSize">18dp</item>
+        <item name="fontFamily">@font/roboto_light</item>
+    </style>
+
+    <style name="apartados">
+        <item name="android:textColor">#547FA1</item>
+        <item name="android:textSize">16dp</item>
+        <item name="fontFamily">@font/roboto_light</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="titulo">
+        <item name="android:textColor">#98b2c7</item>
+        <item name="android:textSize">18dp</item>
+        <item name="fontFamily">@font/roboto_light</item>
+
+    </style>
+
+    <style name="texto_datos">
+        <item name="android:textColor">#547FA1</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+</resources>
