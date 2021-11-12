@@ -118,12 +118,10 @@
                         android:id="@+id/peso_kg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="36dp"
+                        android:layout_marginEnd="90dp"
                         android:text="5 KG"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toEndOf="@+id/name_sensor_peso"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.508" />
                 </androidx.constraintlayout.widget.ConstraintLayout>

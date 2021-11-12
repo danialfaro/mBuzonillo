@@ -1,6 +1,10 @@
 package com.dalfaro.mbuzonillo.ui.tabs;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +17,21 @@ public class DescripcionPaquete extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.descripcion_paquete);
 
+        Button botonCamara = findViewById(R.id.verGrabacion);
+        botonCamara.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                verCamara(view);
+            }
+        });
 
     }
+
+
+    public void verCamara(View view) {
+        Intent myIntent = new Intent(view.getContext(), CamarasActivity.class);
+        startActivity(myIntent);
+        //Toast.makeText(view.getContext(), "Abriendo Cámaras", Toast.LENGTH_SHORT).show();
+    }
+
 }

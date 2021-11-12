@@ -17,13 +17,13 @@
         app:srcCompat="@drawable/boxicon" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="277dp"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/nombre_paquete"
-            android:layout_width="wrap_content"
+            android:layout_width="284dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Amazon Cable Tipo C X1" />
@@ -33,12 +33,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="14/10/2021" />
+
     </LinearLayout>
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/imageFilterView2"
         android:layout_width="20dp"
         android:layout_height="20dp"
+        android:layout_gravity="center"
         android:layout_marginEnd="30dp"
         android:src="@drawable/ic_baseline_arrow_forward_ios_24">
 
