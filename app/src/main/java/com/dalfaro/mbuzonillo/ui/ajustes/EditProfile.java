@@ -2,17 +2,15 @@ package com.dalfaro.mbuzonillo.ui.ajustes;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.DatabaseErrorHandler;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Filter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dalfaro.mbuzonillo.R;
@@ -20,35 +18,30 @@ import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageOptions;
 
 import java.util.HashMap;
-import java.util.concurrent.ThreadPoolExecutor;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfile extends AppCompatActivity {
 
     private CircleImageView profileImageView;
-    private Button closeButton, saveButton;
-    private TextView profileChangeBtn;
 
-    private DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
 
     private Uri imageUri;
     private String myUri = "";
-    private StorageTask uploadTask;
     private StorageReference storageProfilePicsRef;
 
     @Override
@@ -59,15 +52,15 @@ public class EditProfile extends AppCompatActivity {
 
         ////init
         mAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("User");
+        db = FirebaseFirestore.getInstance();
         storageProfilePicsRef = FirebaseStorage.getInstance().getReference().child("Profile Pic");
 
         profileImageView = findViewById(R.id.profile_image);
 
-        closeButton = findViewById(R.id.btnClose);
-        saveButton = findViewById(R.id.btnSave);
+        Button closeButton = findViewById(R.id.btnClose);
+        Button saveButton = findViewById(R.id.btnSave);
 
-        profileChangeBtn=findViewById(R.id.change_profile_btn);
+        TextView profileChangeBtn = findViewById(R.id.change_profile_btn);
 
         closeButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -93,19 +86,24 @@ public class EditProfile extends AppCompatActivity {
         getUserinfo();
     }
     private void getUserinfo(){
-        databaseReference.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener(){
+        db.collection("usuarios").document(mAuth.getCurrentUser().getUid()).addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot){
-                if (dataSnapshot.exists() && dataSnapshot.getChildrenCount() > 0){
-                    if (dataSnapshot.hasChild("image")){
-                        String image = dataSnapshot.child("image").getValue().toString();
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                if (error != null) {
+                    // Log.w(TAG, "Listen failed.", e);
+                    return;
+                }
+
+                if (value != null && value.exists()) {
+                    //Log.d(TAG, "Current data: " + snapshot.getData());
+                    Map<String, Object> data = value.getData();
+                    if(data.get("image") != null) {
+                        String image = data.get("image").toString();
                         Picasso.get().load(image).into(profileImageView);
                     }
+                } else {
+                    //Log.d(TAG, "Current data: null");
                 }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError){
-
             }
         });
     }
@@ -133,7 +131,7 @@ public class EditProfile extends AppCompatActivity {
         if (imageUri != null){
             final StorageReference fileRef = storageProfilePicsRef
                     .child(mAuth.getCurrentUser().getUid()+ ".jpg");
-            uploadTask = fileRef.putFile(imageUri);
+            StorageTask uploadTask = fileRef.putFile(imageUri);
 
             uploadTask.continueWithTask(new Continuation() {
                 @Override
@@ -148,13 +146,13 @@ public class EditProfile extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Uri> task){
                     if (task.isSuccessful()){
-                        Uri downloadUrl =task.getResult();
+                        Uri downloadUrl = task.getResult();
                         myUri = downloadUrl.toString();
 
                         HashMap<String, Object> userMap = new HashMap<>();
-                        userMap.put("image",myUri);
+                        userMap.put("image", myUri);
 
-                        databaseReference.child(mAuth.getCurrentUser().getUid()).updateChildren(userMap);
+                        db.collection("users").document(mAuth.getCurrentUser().getUid()).update(userMap);
 
                         progressDialog.dismiss();
                     }

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dalfaro.mbuzonillo.MainActivity;
 import com.dalfaro.mbuzonillo.R;
 import com.dalfaro.mbuzonillo.models.Paquete;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,7 +28,6 @@ import java.util.ArrayList;
 
 public class Tab2 extends Fragment {
 
-    RecyclerView recyclerView;
     ArrayList<Paquete> paqueteArrayList;
     AdaptadorPaquetes adaptador;
     FirebaseFirestore db;
@@ -49,8 +49,14 @@ public class Tab2 extends Fragment {
 
         db = FirebaseFirestore.getInstance();
         paqueteArrayList = new ArrayList<Paquete>();
-        adaptador = new AdaptadorPaquetes(getActivity(), paqueteArrayList);
+        /*Query query = FirebaseFirestore.getInstance()
+                .collection("buzones").document("QSKKczGZg5vyyWem1gre").collection("paquetes")
+                .limit(50);
+        FirestoreRecyclerOptions<Paquete> opciones = new FirestoreRecyclerOptions
+                .Builder<Paquete>().setQuery(query, Paquete.class).build();
+        adaptador = new AdaptadorPaquetes(opciones, getContext());*/
 
+        adaptador = new AdaptadorPaquetes(getContext(), paqueteArrayList);
         adaptador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,14 +86,23 @@ public class Tab2 extends Fragment {
                         }
 
                         for (DocumentChange dc : value.getDocumentChanges()) {
-                            if (dc.getType() == DocumentChange.Type.ADDED) {
-                                paqueteArrayList.add(dc.getDocument().toObject(Paquete.class));
+                            switch (dc.getType()) {
+                                case ADDED:
+                                    paqueteArrayList.add(dc.getDocument().toObject(Paquete.class));
+                                    break;
+                                case MODIFIED:
+                                    //paqueteArrayList.set(dc.getDocument().getId(), dc.getDocument().toObject(Paquete.class));
+                                    break;
+                                case REMOVED:
+                                    paqueteArrayList.remove(dc.getDocument().toObject(Paquete.class));
+                                    break;
                             }
                             adaptador.notifyDataSetChanged();
                         }
                     }
                 });
     }
+
 
 }
 

@@ -4,30 +4,28 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dalfaro.mbuzonillo.R;
 import com.dalfaro.mbuzonillo.models.Paquete;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
+public class AdaptadorPaquetes extends RecyclerView.Adapter<AdaptadorPaquetes.ViewHolder> implements View.OnClickListener {
 
-public class AdaptadorPaquetes extends RecyclerView.Adapter<AdaptadorPaquetes.ViewHolder> implements View.OnClickListener{
     Context context;
     ArrayList<Paquete> paquetesArrayList;
     private View.OnClickListener listener;
 
     //Constructor
     public AdaptadorPaquetes(Context context, ArrayList<Paquete> paquetesArrayList) {
+        super();
         this.context = context;
         this.paquetesArrayList = paquetesArrayList;
     }
@@ -46,7 +44,7 @@ public class AdaptadorPaquetes extends RecyclerView.Adapter<AdaptadorPaquetes.Vi
     public void onBindViewHolder(@NonNull AdaptadorPaquetes.ViewHolder holder, int position) {
         Paquete paquete = paquetesArrayList.get(position);
 
-        holder.cv.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_transition));
+        holder.itemLayout.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_transition));
         holder.nombre.setText(paquete.getNombre());
         holder.fecha.setText(paquete.getFecha());
         //holder.proveedorDescripcion.setText(paquete.getProveedor());
@@ -57,18 +55,82 @@ public class AdaptadorPaquetes extends RecyclerView.Adapter<AdaptadorPaquetes.Vi
         return paquetesArrayList.size();
     }
 
-    public void setOnClickListener(View.OnClickListener listener){
+    public void setOnClickListener(View.OnClickListener listener) {
         this.listener = listener;
     }
 
     @Override
     public void onClick(View v) {
-        if(listener != null){
+        if (listener != null) {
             listener.onClick(v);
         }
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView nombre, fecha;
+        LinearLayout itemLayout;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            nombre = itemView.findViewById(R.id.nombre_paquete);
+            fecha = itemView.findViewById(R.id.fecha_paquete);
+            itemLayout = itemView.findViewById(R.id.itemLayout);
+
+        }
+    }
+
+}
+
+
+/*
+//Intento de FirebaseRecyclerAdapter
+public class AdaptadorPaquetes extends FirestoreRecyclerAdapter<Paquete, AdaptadorPaquetes.ViewHolder> {
+
+    protected ArrayList<Paquete> paquetesArrayList;
+    protected View.OnClickListener onClickListener;
+    protected Context context;
+
+    public AdaptadorPaquetes(
+            @NonNull FirestoreRecyclerOptions<Paquete> options, Context context) {
+        super(options);
+        this.context = context;
+    }
+
+    @Override
+    public AdaptadorPaquetes.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(R.layout.item_paquete, parent, false);
+        v.setOnClickListener(onClickListener);
+        return new ViewHolder(v);
+    }
+
+    @Override
+    protected void onBindViewHolder(@NonNull AdaptadorPaquetes.ViewHolder holder, int position, @NonNull Paquete lugar) {
+        Paquete paquete = paquetesArrayList.get(position);
+
+        holder.cv.setAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_transition));
+        holder.nombre.setText(paquete.getNombre());
+        holder.fecha.setText(paquete.getFecha());
+        //holder.proveedorDescripcion.setText(paquete.getProveedor());
+    }
+
+    public void setOnClickListener(View.OnClickListener onClick) {
+        onClickListener = onClick;
+    }
+
+    public String getKey(int pos) {
+        return super.getSnapshots().getSnapshot(pos).getId();
+    }
+
+    public int getPos(String id) {
+        int pos = 0;
+        while (pos < getItemCount()) {
+            if (getKey(pos).equals(id)) return pos;
+            pos++;
+        }
+        return -1;
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView nombre, fecha;
         LinearLayout cv;
 
@@ -79,5 +141,6 @@ public class AdaptadorPaquetes extends RecyclerView.Adapter<AdaptadorPaquetes.Vi
             cv = itemView.findViewById(R.id.cv);
 
         }
+
     }
-}
+}*/

@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -15,6 +18,8 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.dalfaro.mbuzonillo.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,7 +51,15 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+        View header = navigationView.getHeaderView(0);
+        ImageView imageMenu = header.findViewById(R.id.imageViewDrawableMenu);
+        //imageMenu
+        TextView nameMenu = header.findViewById(R.id.textViewNameMenu);
+        nameMenu.setText(user.getDisplayName());
+        TextView emailMenu = header.findViewById(R.id.textViewEmailMenu);
+        emailMenu.setText(user.getEmail());
 
 
         //Setup

@@ -41,7 +41,7 @@ public class Ajustes extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.ajustes, container, false);
 
-//Usuario Información
+        //Usuario Información
         FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
         String nombre = usuario.getDisplayName();
         String correo = usuario.getEmail();
