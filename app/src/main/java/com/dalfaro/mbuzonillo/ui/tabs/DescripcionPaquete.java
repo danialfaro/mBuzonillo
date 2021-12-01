@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dalfaro.mbuzonillo.R;
+import com.dalfaro.mbuzonillo.models.Paquete;
 
 public class DescripcionPaquete extends AppCompatActivity {
 
@@ -16,6 +17,9 @@ public class DescripcionPaquete extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.descripcion_paquete);
+
+        Paquete paquete = (Paquete) getIntent().getSerializableExtra("paquete");
+        System.out.println(paquete);
 
         Button botonCamara = findViewById(R.id.verGrabacion);
         botonCamara.setOnClickListener(new View.OnClickListener() {

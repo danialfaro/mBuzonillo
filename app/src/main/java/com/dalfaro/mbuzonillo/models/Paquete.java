@@ -1,7 +1,12 @@
 package com.dalfaro.mbuzonillo.models;
 
-public class Paquete {
+
+import java.io.Serializable;
+
+public class Paquete implements Serializable {
+
     String nombre, fecha, proveedor;
+
     //Constructor
     public Paquete(String nombre, String fecha, String proveedor) {
         this.nombre = nombre;
