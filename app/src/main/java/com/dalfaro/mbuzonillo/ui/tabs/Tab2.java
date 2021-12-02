@@ -5,12 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.dalfaro.mbuzonillo.databinding.Tab2Binding;
 import com.dalfaro.mbuzonillo.models.Paquete;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.firebase.ui.firestore.SnapshotParser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -58,8 +61,13 @@ public class Tab2 extends Fragment {
                 .collection("buzones").document("QSKKczGZg5vyyWem1gre").collection("paquetes")
                 .orderBy("fecha")
                 .limit(50);
+        SnapshotParser<Paquete> snapshotParser = snapshot -> {
+            Paquete paquete = snapshot.toObject(Paquete.class);
+            paquete.setUid(snapshot.getId());
+            return paquete;
+        };
         FirestoreRecyclerOptions<Paquete> opciones = new FirestoreRecyclerOptions
-                .Builder<Paquete>().setQuery(query, Paquete.class).build();
+                .Builder<Paquete>().setQuery(query, snapshotParser).build();
         adapter = new PaquetesFirebaseRecyclerAdapter(opciones);
 
         binding.recyclerView.setAdapter(adapter);

@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textViewEmailMenu"
+            android:id="@+id/textViewNombrePaquete"
             style="@style/titulos_principales"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

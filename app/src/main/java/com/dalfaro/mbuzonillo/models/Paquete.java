@@ -5,7 +5,10 @@ import java.io.Serializable;
 
 public class Paquete implements Serializable {
 
-    String nombre, fecha, proveedor;
+    String uid;
+    String nombre;
+    String fecha;
+    String proveedor;
 
     //Constructor
     public Paquete(String nombre, String fecha, String proveedor) {
@@ -15,7 +18,9 @@ public class Paquete implements Serializable {
     }
     public Paquete(){}
 
-    //Getters and Settes
+    //Getters and Setters
+    public void setUid(String uid) { this.uid = uid; }
+
     public String getNombre() {
         return nombre;
     }

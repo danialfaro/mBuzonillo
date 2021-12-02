@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         //imageMenu
         TextView nameMenu = header.findViewById(R.id.textViewNameMenu);
         nameMenu.setText(user.getDisplayName());
-        TextView emailMenu = header.findViewById(R.id.textViewEmailMenu);
+        TextView emailMenu = header.findViewById(R.id.textViewNombrePaquete);
         emailMenu.setText(user.getEmail());
 
 

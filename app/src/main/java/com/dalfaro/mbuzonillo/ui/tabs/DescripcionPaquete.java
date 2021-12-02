@@ -9,17 +9,26 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dalfaro.mbuzonillo.R;
+import com.dalfaro.mbuzonillo.databinding.DescripcionPaqueteBinding;
 import com.dalfaro.mbuzonillo.models.Paquete;
 
 public class DescripcionPaquete extends AppCompatActivity {
 
+    DescripcionPaqueteBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.descripcion_paquete);
+        binding = DescripcionPaqueteBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
+        //setContentView(R.layout.descripcion_paquete);
 
         Paquete paquete = (Paquete) getIntent().getSerializableExtra("paquete");
         System.out.println(paquete);
+
+        binding.textViewNombrePaquete.setText(paquete.getNombre());
 
         Button botonCamara = findViewById(R.id.verGrabacion);
         botonCamara.setOnClickListener(new View.OnClickListener() {
@@ -29,6 +38,12 @@ public class DescripcionPaquete extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding = null;
     }
 
 
