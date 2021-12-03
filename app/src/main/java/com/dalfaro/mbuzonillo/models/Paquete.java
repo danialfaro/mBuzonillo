@@ -1,7 +1,15 @@
 package com.dalfaro.mbuzonillo.models;
 
-public class Paquete {
-    String nombre, fecha, proveedor;
+
+import java.io.Serializable;
+
+public class Paquete implements Serializable {
+
+    String uid;
+    String nombre;
+    String fecha;
+    String proveedor;
+
     //Constructor
     public Paquete(String nombre, String fecha, String proveedor) {
         this.nombre = nombre;
@@ -10,7 +18,9 @@ public class Paquete {
     }
     public Paquete(){}
 
-    //Getters and Settes
+    //Getters and Setters
+    public void setUid(String uid) { this.uid = uid; }
+
     public String getNombre() {
         return nombre;
     }
