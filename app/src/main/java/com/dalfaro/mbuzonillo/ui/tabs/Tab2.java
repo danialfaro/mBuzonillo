@@ -37,21 +37,6 @@ public class Tab2 extends Fragment {
 
         SetupFirebaseRecyclerView();
 
-        /*db = FirebaseFirestore.getInstance();
-        paqueteArrayList = new ArrayList<>();
-
-        adapter = new adapterPaquetes(getContext(), paqueteArrayList);
-        adapter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(getApplicationContext(), "Por lo menos te saca el nombre: " + paqueteArrayList.get(recyclerView.getChildAdapterPosition(v)).getNombre(),Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(v.getContext(), DescripcionPaquete.class);
-                startActivity(intent);
-            }
-        });
-
-        EventChangeListener();*/
-
         return root;
     }
 

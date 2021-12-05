@@ -1,11 +1,10 @@
 package com.dalfaro.mbuzonillo.ui.tabs;
 
 import android.content.Intent;
-import android.os.Bundle;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,8 +14,6 @@ import com.dalfaro.mbuzonillo.R;
 import com.dalfaro.mbuzonillo.models.Paquete;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-
-import java.io.Serializable;
 
 public class PaquetesFirebaseRecyclerAdapter extends FirestoreRecyclerAdapter<Paquete, PaqueteHolder> {
 
@@ -28,11 +25,16 @@ public class PaquetesFirebaseRecyclerAdapter extends FirestoreRecyclerAdapter<Pa
     protected void onBindViewHolder(@NonNull PaqueteHolder holder, int position, @NonNull Paquete model) {
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
+
+        CharSequence prettyTime = DateUtils.getRelativeDateTimeString(
+                holder.itemView.getContext(), model.getFecha(), DateUtils.SECOND_IN_MILLIS,
+                DateUtils.WEEK_IN_MILLIS, 0);
+
         holder.getNombre().setText(model.getNombre());
-        holder.getFecha().setText(model.getFecha());
+        holder.getFecha().setText(prettyTime.toString());
 
         holder.itemView.setOnClickListener(view -> {
-            Intent intent = new Intent(view.getContext(), DescripcionPaquete.class);
+            Intent intent = new Intent(view.getContext(), DetallePaquete.class);
             intent.putExtra("paquete", model);
             view.getContext().startActivity(intent);
         });

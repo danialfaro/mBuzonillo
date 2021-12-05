@@ -7,14 +7,18 @@ public class Paquete implements Serializable {
 
     String uid;
     String nombre;
-    String fecha;
+    long fecha;
     String proveedor;
+    String imagenUrl;
+    String peso;
 
     //Constructor
-    public Paquete(String nombre, String fecha, String proveedor) {
+    public Paquete(String nombre, long fecha, String proveedor, String imagenUrl, String peso) {
         this.nombre = nombre;
         this.fecha = fecha;
         this.proveedor = proveedor;
+        this.imagenUrl = imagenUrl;
+        this.peso = peso;
     }
     public Paquete(){}
 
@@ -29,11 +33,9 @@ public class Paquete implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getFecha() {
-        return fecha;
-    }
+    public long getFecha() { return fecha; }
 
-    public void setFecha(String fecha) {
+    public void setFecha(long fecha) {
         this.fecha = fecha;
     }
 
@@ -41,5 +43,21 @@ public class Paquete implements Serializable {
 
     public void setProveedor(String proveedor) {
         this.proveedor = proveedor;
+    }
+
+    public String getImagenUrl() {
+        return imagenUrl;
+    }
+
+    public void setImagenUrl(String imagenUrl) {
+        this.imagenUrl = imagenUrl;
+    }
+
+    public String getPeso() {
+        return peso;
+    }
+
+    public void setPeso(String peso) {
+        this.peso = peso;
     }
 }

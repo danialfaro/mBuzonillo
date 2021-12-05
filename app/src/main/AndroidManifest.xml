@@ -31,8 +31,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.tabs.CamarasActivity"/>
-        <activity android:name=".ui.tabs.DescripcionPaquete"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".ui.tabs.DetallePaquete"/>
+        <!-- <activity android:name=".ui.tabs.DescripcionPaquete"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/> -->
 
         <activity android:name=".ui.ajustes.MapaActivity"/>
         <activity android:name=".ui.ajustes.AcercaDeActivity"
