@@ -9,6 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <!-- Custom -->
     <color name="whiteTransparent">#CCFFFFFF</color>
-    <color name="blue_200_buz">#86A7FC</color>
-    <color name="blue_500_buz">#004FEE</color>
+    <color name="blue_200_buz">#8FC0E8</color>  <!-- 86A7FC -->
+    <color name="blue_500_buz">#477AA6</color>  <!-- 004FEE -->
 </resources>

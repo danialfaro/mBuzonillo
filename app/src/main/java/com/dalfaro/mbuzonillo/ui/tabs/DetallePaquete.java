@@ -12,6 +12,7 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
 import com.bumptech.glide.Glide;
 import com.dalfaro.mbuzonillo.R;
@@ -38,9 +39,14 @@ public class DetallePaquete extends AppCompatActivity {
 
         actionBarSetup(paquete.getNombre(), prettyTime.toString());
 
+        CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(this);
+        circularProgressDrawable.setStrokeWidth(5f);
+        circularProgressDrawable.setCenterRadius(30f);
+        circularProgressDrawable.start();
+
         Glide.with(this)
                 .load(paquete.getImagenUrl())
-                .placeholder(R.drawable.ic_launcher_foreground)
+                .placeholder(circularProgressDrawable)
                 .into(binding.imageView);
 
         binding.textViewProveedor.setText(paquete.getProveedor());
