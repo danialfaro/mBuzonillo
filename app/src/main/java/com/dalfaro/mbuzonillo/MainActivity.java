@@ -62,20 +62,25 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore.collection("usuarios").document(usuario.getUid()).get().addOnSuccessListener(documentSnapshot -> {
+
             Usuario userData = documentSnapshot.toObject(Usuario.class);
 
-            View header = navigationView.getHeaderView(0);
-            ImageView imageMenu = header.findViewById(R.id.imageViewDrawableMenu);
+            if(userData != null) {
+                View header = navigationView.getHeaderView(0);
+                ImageView imageMenu = header.findViewById(R.id.imageViewDrawableMenu);
 
-            Glide.with(this)
-                    .load(userData.getProfilePicUrl())
-                    .placeholder(R.drawable.ic_launcher_foreground)
-                    .into(imageMenu);
+                Glide.with(this)
+                        .load(userData.getProfilePicUrl())
+                        .placeholder(R.drawable.ic_launcher_foreground)
+                        .into(imageMenu);
 
-            TextView nameMenu = header.findViewById(R.id.textViewNameMenu);
-            nameMenu.setText(userData.getNombre());
-            TextView emailMenu = header.findViewById(R.id.textViewNombrePaquete);
-            emailMenu.setText(userData.getCorreo());
+                TextView nameMenu = header.findViewById(R.id.textViewNameMenu);
+                nameMenu.setText(userData.getNombre());
+                TextView emailMenu = header.findViewById(R.id.textViewNombrePaquete);
+                emailMenu.setText(userData.getCorreo());
+            }
+
+
         });
 
 

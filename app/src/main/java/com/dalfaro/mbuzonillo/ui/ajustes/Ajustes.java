@@ -60,20 +60,23 @@ public class Ajustes extends Fragment {
 
             Usuario userData = documentSnapshot.toObject(Usuario.class);
 
-            CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(getContext());
-            circularProgressDrawable.setStrokeWidth(5f);
-            circularProgressDrawable.setCenterRadius(30f);
-            circularProgressDrawable.start();
+            if(userData != null) {
+                CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(getContext());
+                circularProgressDrawable.setStrokeWidth(5f);
+                circularProgressDrawable.setCenterRadius(30f);
+                circularProgressDrawable.start();
 
-            Glide.with(this)
-                    .load(userData.getProfilePicUrl())
-                    .placeholder(circularProgressDrawable)
-                    .into(binding.imageView2);
+                Glide.with(this)
+                        .load(userData.getProfilePicUrl())
+                        .placeholder(circularProgressDrawable)
+                        .into(binding.imageView2);
 
-            binding.imageView2.setAnimation(AnimationUtils.loadAnimation(getContext(),R.anim.anim2));
+                binding.imageView2.setAnimation(AnimationUtils.loadAnimation(getContext(),R.anim.anim2));
 
-            binding.nombreUsuario.setText(userData.getNombre().split(" ")[0]);
-            binding.correoUsuario.setText(userData.getCorreo().split(" ")[0]);
+                binding.nombreUsuario.setText(userData.getNombre().split(" ")[0]);
+                binding.correoUsuario.setText(userData.getCorreo().split(" ")[0]);
+            }
+
 
         });
 
