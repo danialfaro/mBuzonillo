@@ -1,36 +1,27 @@
 package com.dalfaro.mbuzonillo.ui.tabs;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.dalfaro.mbuzonillo.MainActivity;
-import com.dalfaro.mbuzonillo.R;
+import com.dalfaro.mbuzonillo.databinding.Tab2Binding;
 import com.dalfaro.mbuzonillo.models.Paquete;
-import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.EventListener;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.firebase.ui.firestore.SnapshotParser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.ArrayList;
 
 
 public class  Tab2 extends Fragment {
 
-    RecyclerView recyclerView;
-    ArrayList<Paquete> paqueteArrayList;
-    AdaptadorPaquetes adaptador;
-    FirebaseFirestore db;
+    private PaquetesFirebaseRecyclerAdapter adapter;
+    private Tab2Binding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,34 +31,48 @@ public class  Tab2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.tab2, container, false);
 
+        binding = Tab2Binding.inflate(inflater, container, false);
+        View root = binding.getRoot();
 
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        SetupFirebaseRecyclerView();
 
-        db = FirebaseFirestore.getInstance();
-        paqueteArrayList = new ArrayList<Paquete>();
-        adaptador = new AdaptadorPaquetes(getActivity(), paqueteArrayList);
-
-        adaptador.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(getApplicationContext(), "Por lo menos te saca el nombre: " + paqueteArrayList.get(recyclerView.getChildAdapterPosition(v)).getNombre(),Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(v.getContext(), DescripcionPaquete.class);
-                startActivity(intent);
-            }
-        });
-
-        recyclerView.setAdapter(adaptador);
-
-        EventChangeListener();
-
-        return view;
+        return root;
     }
 
-    private void EventChangeListener() {
+    private void SetupFirebaseRecyclerView() {
+
+        Query query = FirebaseFirestore.getInstance()
+                .collection("buzones").document("QSKKczGZg5vyyWem1gre").collection("paquetes")
+                .orderBy("fecha")
+                .limit(50);
+        SnapshotParser<Paquete> snapshotParser = snapshot -> {
+            Paquete paquete = snapshot.toObject(Paquete.class);
+            paquete.setUid(snapshot.getId());
+            return paquete;
+        };
+        FirestoreRecyclerOptions<Paquete> opciones = new FirestoreRecyclerOptions
+                .Builder<Paquete>().setQuery(query, snapshotParser).build();
+        adapter = new PaquetesFirebaseRecyclerAdapter(opciones);
+
+        binding.recyclerView.setAdapter(adapter);
+        binding.recyclerView.setHasFixedSize(true);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+
+    /*private void EventChangeListener() {
         db.collection("buzones").document("QSKKczGZg5vyyWem1gre").collection("paquetes").orderBy("fecha", Query.Direction.ASCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
@@ -80,14 +85,23 @@ public class  Tab2 extends Fragment {
                         }
 
                         for (DocumentChange dc : value.getDocumentChanges()) {
-                            if (dc.getType() == DocumentChange.Type.ADDED) {
-                                paqueteArrayList.add(dc.getDocument().toObject(Paquete.class));
+                            switch (dc.getType()) {
+                                case ADDED:
+                                    paqueteArrayList.add(dc.getDocument().toObject(Paquete.class));
+                                    break;
+                                case MODIFIED:
+                                    //paqueteArrayList.set(dc.getDocument().getId(), dc.getDocument().toObject(Paquete.class));
+                                    break;
+                                case REMOVED:
+                                    paqueteArrayList.remove(dc.getDocument().toObject(Paquete.class));
+                                    break;
                             }
-                            adaptador.notifyDataSetChanged();
+                            adapter.notifyDataSetChanged();
                         }
                     }
                 });
-    }
+    }*/
+
 
 }
 

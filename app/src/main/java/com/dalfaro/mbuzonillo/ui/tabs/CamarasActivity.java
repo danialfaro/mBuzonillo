@@ -3,9 +3,6 @@ package com.dalfaro.mbuzonillo.ui.tabs;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -18,6 +15,7 @@ public class CamarasActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.camaras);
 

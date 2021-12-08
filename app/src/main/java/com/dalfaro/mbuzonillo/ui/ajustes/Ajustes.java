@@ -23,14 +23,24 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
+import com.bumptech.glide.Glide;
 import com.dalfaro.mbuzonillo.AuthActivity;
 import com.dalfaro.mbuzonillo.R;
+import com.dalfaro.mbuzonillo.databinding.AjustesBinding;
+import com.dalfaro.mbuzonillo.databinding.FragmentHomeBinding;
+import com.dalfaro.mbuzonillo.models.Usuario;
 import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Ajustes extends Fragment {
+
+    AjustesBinding binding;
 
     String selectedidioma = "Español";
     String selectedtema = "Claro";
@@ -39,26 +49,40 @@ public class Ajustes extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.ajustes, container, false);
 
-//Usuario Información
+        binding = AjustesBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
+        //Usuario Información
         FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
-        String nombre = usuario.getDisplayName();
-        String correo = usuario.getEmail();
-        String telefono = usuario.getPhoneNumber();
-        Uri urlFoto = usuario.getPhotoUrl();
-        String uid = usuario.getUid();
-        String proveedores = usuario.getProviderData().toString();
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        firestore.collection("usuarios").document(usuario.getUid()).get().addOnSuccessListener(documentSnapshot -> {
 
-        TextView textoNombre = (TextView) view.findViewById(R.id.nombreUsuario);
-        textoNombre.setText(nombre.split(" ")[0]);
+            Usuario userData = documentSnapshot.toObject(Usuario.class);
 
-        TextView textoCorreo = (TextView) view.findViewById(R.id.correoUsuario);
-        textoCorreo.setText(correo.split(" ")[0]);
+            if(userData != null) {
+                CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(getContext());
+                circularProgressDrawable.setStrokeWidth(5f);
+                circularProgressDrawable.setCenterRadius(30f);
+                circularProgressDrawable.start();
+
+                Glide.with(this)
+                        .load(userData.getProfilePicUrl())
+                        .placeholder(circularProgressDrawable)
+                        .into(binding.imageView2);
+
+                binding.imageView2.setAnimation(AnimationUtils.loadAnimation(getContext(),R.anim.anim2));
+
+                binding.nombreUsuario.setText(userData.getNombre().split(" ")[0]);
+                binding.correoUsuario.setText(userData.getCorreo().split(" ")[0]);
+            }
+
+
+        });
+
 
         //Cerrar Sesión
-        Button cerrarSesion = (Button) view.findViewById(R.id.btn_cerrar_sesion2);
-        cerrarSesion.setOnClickListener(view2 -> AuthUI.getInstance().signOut(getContext())
+        binding.btnCerrarSesion2.setOnClickListener(view2 -> AuthUI.getInstance().signOut(getContext())
                 .addOnCompleteListener(task -> {
 
                     //Borrar datos login
@@ -67,7 +91,7 @@ public class Ajustes extends Fragment {
                     editor.clear();
                     editor.apply();
 
-                    Intent i = new Intent(cerrarSesion.getContext(), AuthActivity.class);
+                    Intent i = new Intent(binding.btnCerrarSesion2.getContext(), AuthActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
                             | Intent.FLAG_ACTIVITY_NEW_TASK
                             | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -75,66 +99,55 @@ public class Ajustes extends Fragment {
                     getActivity().finish();
                 }));
 
-        cerrarSesion.setBackgroundColor(Color.parseColor("#547FA1"));
+        binding.btnCerrarSesion2.setBackgroundColor(Color.parseColor("#547FA1"));
 
         //Click
 
-        TextView clidioma = (TextView) view.findViewById(R.id.idioma);
-        clidioma.setOnClickListener(new View.OnClickListener() {
+        binding.idioma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lanzarAvisoIdioma(clidioma);
+                lanzarAvisoIdioma(binding.idioma);
             }
         });
 
-        TextView cltema = (TextView) view.findViewById(R.id.apariencia);
-        cltema.setOnClickListener(new View.OnClickListener() {
+        binding.apariencia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lanzarAvisoTema(cltema);
+                lanzarAvisoTema(binding.apariencia);
             }
         });
 
-        TextView clllamar = (TextView) view.findViewById(R.id.flechaLlamar);
-        clllamar.setOnClickListener(new View.OnClickListener() {
+        binding.flechaLlamar.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View view) {
-                lanzarLlamar(clllamar);
+                lanzarLlamar(binding.flechaLlamar);
             }
         });
 
-        TextView clcorreo = (TextView) view.findViewById(R.id.flechaCorreo);
-        clcorreo.setOnClickListener(new View.OnClickListener() {
+        binding.flechaCorreo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lanzarCorreo(clcorreo);
+                lanzarCorreo(binding.flechaCorreo);
             }
         });
 
-        TextView clacercade = (TextView) view.findViewById(R.id.flechaAcercade);
-        clacercade.setOnClickListener(new View.OnClickListener() {
+        binding.flechaAcercade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lanzarAcercaDe(clacercade);
+                lanzarAcercaDe(binding.flechaAcercade);
             }
         });
 
-        TextView clubicacion = (TextView) view.findViewById(R.id.flechaUbicacion);
-        clubicacion.setOnClickListener(new View.OnClickListener() {
+        binding.ubicacion.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View view) {
-                lanzarUbicacion(clubicacion);
+                lanzarUbicacion(binding.ubicacion);
             }
         });
 
-
-        ImageView image = view.findViewById(R.id.imageView2);
-        image.setAnimation(AnimationUtils.loadAnimation(getContext(),R.anim.anim2));
-
-
-        return view;
+        return root;
     }
 
     public void lanzarAvisoIdioma(View view){

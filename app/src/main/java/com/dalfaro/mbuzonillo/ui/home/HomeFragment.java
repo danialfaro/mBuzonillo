@@ -25,15 +25,12 @@ public class HomeFragment extends Fragment {
 
     private final String[] tabsTitles = new String[]{"Sensores","Historial"};
 
-    private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
 
     ImageView imageViewBuzon;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
