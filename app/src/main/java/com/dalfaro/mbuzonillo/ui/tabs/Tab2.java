@@ -25,7 +25,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
 
-public class Tab2 extends Fragment {
+public class  Tab2 extends Fragment {
 
     RecyclerView recyclerView;
     ArrayList<Paquete> paqueteArrayList;
