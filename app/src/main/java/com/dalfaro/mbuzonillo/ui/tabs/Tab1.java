@@ -70,6 +70,7 @@ public class Tab1 extends Fragment{
 
         ConstraintLayout clp2 = view.findViewById(R.id.constraintLayoutPuerta);
         clp2.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 cambiarPuerta(view);
@@ -99,6 +100,7 @@ public class Tab1 extends Fragment{
         db.collection("buzones").document("iuuL6GzS8k8uz042XkBy")
                 .addSnapshotListener(
                         new EventListener<DocumentSnapshot>() {
+                            @RequiresApi(api = Build.VERSION_CODES.O)
                             @Override
                             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                                 Log.d("Data:" , "" + value.getData().get("peso"));
@@ -112,10 +114,13 @@ public class Tab1 extends Fragment{
                                     puertadb.setText("Abierta");
                                     estado_puerta = true;
                                     puertadb.setTextColor(0xFF335571);
+                                    getActivity().startForegroundService(new Intent(getContext(), ServicioPuertaAbierta.class));
                                 }else{
                                     puertadb.setText("Cerrada");
                                     estado_puerta = false;
                                     puertadb.setTextColor(0xFFD74646);
+                                    getActivity().stopService(new Intent(getContext(), ServicioPuertaAbierta.class));
+
                                 }
 
                                 if (dato_iluminacion == true){
@@ -130,6 +135,7 @@ public class Tab1 extends Fragment{
                         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void cambiarPuerta(View view) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference ref = db.collection("buzones").document("iuuL6GzS8k8uz042XkBy");
@@ -140,6 +146,7 @@ public class Tab1 extends Fragment{
             Map<String, Object> hopperUpdates = new HashMap<>();
             hopperUpdates.put("puerta", false);
             ref.update(hopperUpdates);
+            getActivity().stopService(new Intent(getContext(), ServicioPuertaAbierta.class));
         } else {
 
             estado_puerta = true;
@@ -147,6 +154,8 @@ public class Tab1 extends Fragment{
             Map<String, Object> hopperUpdates = new HashMap<>();
             hopperUpdates.put("puerta", true);
             ref.update(hopperUpdates);
+            getActivity().startForegroundService(new Intent(getContext(), ServicioPuertaAbierta.class));
+
         }
     }
 
