@@ -23,8 +23,9 @@
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/content_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/descripcion_paquete.xml" value="0.33" />
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/detalle_paquete.xml" value="0.5050215208034433" />
+        <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/fragment_buzones.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/fragment_gallery.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/fragment_home.xml" value="1.1" />
+        <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/fragment_home.xml" value="0.7034540859309183" />
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/fragment_slideshow.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/google_maps.xml" value="0.1" />
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/item_paquete.xml" value="0.264" />
@@ -49,7 +50,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
