@@ -41,9 +41,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Ajustes extends Fragment {
 
     AjustesBinding binding;
-
-    String selectedidioma = "Español";
-    String selectedtema = "Claro";
     int REQUEST_CODE = 200;
     int REQUEST_CODE2 = 1;
 
@@ -103,20 +100,6 @@ public class Ajustes extends Fragment {
 
         //Click
 
-        binding.idioma.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lanzarAvisoIdioma(binding.idioma);
-            }
-        });
-
-        binding.apariencia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lanzarAvisoTema(binding.apariencia);
-            }
-        });
-
         binding.flechaLlamar.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
@@ -143,62 +126,11 @@ public class Ajustes extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View view) {
-                lanzarUbicacion(binding.ubicacion);
+                lanzarUbicacion(binding.flechaUbicacion);
             }
         });
 
         return root;
-    }
-
-    public void lanzarAvisoIdioma(View view){
-        TextView text = view.findViewById(R.id.idioma);
-        //AlertDialog List
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle(getResources().getString(R.string.idioma));
-        String[] idiomasEleccion = getResources().getStringArray(R.array.idiomas_select);
-        int checkedItem = 0;
-
-        builder.setSingleChoiceItems(idiomasEleccion, checkedItem, new DialogInterface.OnClickListener() {
-            @Override
-                public void onClick(DialogInterface dialogInterface, int which) {
-                selectedidioma = idiomasEleccion[which];
-            }
-        });
-        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                text.setText(selectedidioma);
-            }
-        });
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
-
-    public void lanzarAvisoTema(View view){
-        TextView text2 = view.findViewById(R.id.apariencia);
-        //AlertDialog List
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle(getResources().getString(R.string.tema));
-
-        String[] temaEleccion = getResources().getStringArray(R.array.tema_select);
-
-        int checkedItem = 0;
-
-        builder.setSingleChoiceItems(temaEleccion, checkedItem, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int which) {
-                selectedtema = temaEleccion[which];
-
-            }
-        });
-        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                text2.setText(selectedtema);
-            }
-        });
-        AlertDialog dialog = builder.create();
-        dialog.show();
     }
 
 
