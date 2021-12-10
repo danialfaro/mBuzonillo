@@ -15,7 +15,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class Galeria_Imagen extends AppCompatActivity {
+public class GaleriaImagenesActivity extends AppCompatActivity {
     private AdaptadorImagenes adaptador;
 
     @Override

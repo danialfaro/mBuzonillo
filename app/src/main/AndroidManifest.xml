@@ -43,7 +43,7 @@
             android:label="Acerca de ..."
             android:theme="@style/Theme.AppCompat.Light.Dialog"/>
         <activity android:name=".ui.ajustes.EditProfile"/>
-        <activity android:name=".Galeria_Imagen"/>
+        <activity android:name=".GaleriaImagenesActivity"/>
 
 
         <meta-data android:name="com.google.android.geo.API_KEY"

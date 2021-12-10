@@ -6,7 +6,7 @@ public class Imagen {
 
     public Imagen() { }
 
-    public Imagen(String titulo, String url) {
+    public Imagen(String url, long tiempo) {
         this.url = url;
         this.tiempo = tiempo;
     }
