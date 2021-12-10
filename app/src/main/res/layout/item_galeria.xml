@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="8dp"
+    android:layout_marginHorizontal="50dp"
+    android:layout_marginVertical="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#166392B6">
+
+        <ImageView
+            android:id="@+id/productoImagen"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitXY"
+            android:src="@android:color/background_dark" />
+
+        <TextView
+            android:id="@+id/productoFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Title"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="#166392B6"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

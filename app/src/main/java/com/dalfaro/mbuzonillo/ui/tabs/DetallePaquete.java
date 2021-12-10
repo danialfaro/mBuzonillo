@@ -51,6 +51,8 @@ public class DetallePaquete extends AppCompatActivity {
 
         binding.textViewProveedor.setText(paquete.getProveedor());
         binding.textViewPeso.setText(paquete.getPeso());
+        binding.textoDescripcion.setText(paquete.getDescripcion());
+        binding.textoPrecio.setText(paquete.getPrecio());
 
     }
 

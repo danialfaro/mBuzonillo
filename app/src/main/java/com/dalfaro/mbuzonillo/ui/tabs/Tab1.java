@@ -18,6 +18,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
+import com.dalfaro.mbuzonillo.Galeria_Imagen;
 import com.dalfaro.mbuzonillo.R;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -183,7 +184,7 @@ public class Tab1 extends Fragment implements MqttCallback {
     }
 
     public void verCamara(View view) {
-        Intent myIntent = new Intent(view.getContext(), CamarasActivity.class);
+        Intent myIntent = new Intent(view.getContext(), Galeria_Imagen.class);
         startActivity(myIntent);
     }
 

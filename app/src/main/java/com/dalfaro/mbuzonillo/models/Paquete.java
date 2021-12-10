@@ -11,14 +11,18 @@ public class Paquete implements Serializable {
     String proveedor;
     String imagenUrl;
     String peso;
+    String descripcion;
+    String precio;
 
     //Constructor
-    public Paquete(String nombre, long fecha, String proveedor, String imagenUrl, String peso) {
+    public Paquete(String nombre, long fecha, String proveedor, String imagenUrl, String peso, String descripcion, String precio) {
         this.nombre = nombre;
         this.fecha = fecha;
         this.proveedor = proveedor;
         this.imagenUrl = imagenUrl;
         this.peso = peso;
+        this.descripcion = descripcion;
+        this.precio = precio;
     }
     public Paquete(){}
 
@@ -63,5 +67,21 @@ public class Paquete implements Serializable {
 
     public void setPeso(String peso) {
         this.peso = peso;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(String precio) {
+        this.precio = precio;
     }
 }

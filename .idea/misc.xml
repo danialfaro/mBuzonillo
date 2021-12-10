@@ -35,16 +35,21 @@
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2703125" />
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/xml/root_preferences.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/MSI/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/auto_complete_list.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/X412/mBuzonillo/app/src/main/res/layout/ajustes.xml" value="0.42397914856646396" />
-        <entry key="..\:/Users/X412/mBuzonillo/app/src/main/res/layout/tab1.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/X412/mBuzonillo/app/src/main/res/layout/tab2.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/deivi/StudioProjects/mBuzonillo/app/src/main/res/drawable-v24/ic_baseline_arrow_back_ios_24.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/deivi/StudioProjects/mBuzonillo/app/src/main/res/drawable-v24/ic_baseline_arrow_forward_ios_24.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/deivi/StudioProjects/mBuzonillo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/deivi/StudioProjects/mBuzonillo/app/src/main/res/drawable-v24/sensor_peso.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/deivi/StudioProjects/mBuzonillo/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/deivi/StudioProjects/mBuzonillo/app/src/main/res/layout/acercade.xml" value="0.33" />
+        <entry key="..\:/Users/deivi/StudioProjects/mBuzonillo/app/src/main/res/layout/ajustes.xml" value="0.2" />
         <entry key="..\:/Users/deivi/StudioProjects/mBuzonillo/app/src/main/res/layout/descripcion_paquete.xml" value="0.25" />
+        <entry key="..\:/Users/deivi/StudioProjects/mBuzonillo/app/src/main/res/layout/detalle_paquete.xml" value="0.25" />
+        <entry key="..\:/Users/deivi/StudioProjects/mBuzonillo/app/src/main/res/layout/galeria_fotos.xml" value="0.2" />
+        <entry key="..\:/Users/deivi/StudioProjects/mBuzonillo/app/src/main/res/layout/galeria_imagen.xml" value="0.2" />
+        <entry key="..\:/Users/deivi/StudioProjects/mBuzonillo/app/src/main/res/layout/item_galeria.xml" value="0.22" />
+        <entry key="..\:/Users/deivi/StudioProjects/mBuzonillo/app/src/main/res/layout/item_galeria2.xml" value="0.33" />
         <entry key="..\:/Users/deivi/StudioProjects/mBuzonillo/app/src/main/res/layout/item_paquete.xml" value="0.33" />
+        <entry key="..\:/Users/deivi/StudioProjects/mBuzonillo/app/src/main/res/layout/itrm_galeria.xml" value="0.2" />
         <entry key="..\:/Users/deivi/StudioProjects/mBuzonillo/app/src/main/res/layout/tab1.xml" value="0.33" />
         <entry key="..\:/Users/deivi/StudioProjects/mBuzonillo/app/src/main/res/layout/tab2.xml" value="0.2" />
       </map>
