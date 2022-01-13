@@ -47,11 +47,14 @@ public class Tab1 extends Fragment implements MqttCallback {
     private TextView iluminaciondb;
 
     boolean estado_iluminacion;
-    ImageView image;
+    ImageView imageIluminacion;
     ImageView imageCerradura;
 
     private static MqttClient client;
     private String estadoPuertaMQTT = "2";
+
+    FirebaseFirestore db;
+    DocumentReference ref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,16 +67,23 @@ public class Tab1 extends Fragment implements MqttCallback {
 
         View view = inflater.inflate(R.layout.tab1, container, false);
 
+        db = FirebaseFirestore.getInstance();
+        ref = db.collection("buzones").document("iuuL6GzS8k8uz042XkBy");
+
         imageCerradura = view.findViewById(R.id.image_puerta);
+        imageIluminacion = view.findViewById(R.id.image_iluminacion);
 
         puertadb = view.findViewById(R.id.puerta_abierta_cerrada);
         pesodb = view.findViewById(R.id.peso_kg);
         iluminaciondb = view.findViewById(R.id.iluminacion_encendido_apagado);
+
         obtenerdatos();
 
         conectarMqtt();
 
         suscribirMqtt("motor_estado", this);
+        suscribirMqtt("peso", this);
+        suscribirMqtt("led", this);
 
         ConstraintLayout clp2 = view.findViewById(R.id.constraintLayoutPuerta);
         clp2.setOnClickListener(new View.OnClickListener() {
@@ -103,9 +113,7 @@ public class Tab1 extends Fragment implements MqttCallback {
     }
 
     public void obtenerdatos(){
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("buzones").document("iuuL6GzS8k8uz042XkBy")
-                .addSnapshotListener(
+        ref.addSnapshotListener(
                         new EventListener<DocumentSnapshot>() {
                             @RequiresApi(api = Build.VERSION_CODES.O)
                             @Override
@@ -113,7 +121,6 @@ public class Tab1 extends Fragment implements MqttCallback {
                                 Log.d("Data:" , "" + value.getData().get("peso"));
 
                                 String dato_peso = (String) value.getData().get("peso");
-                                boolean dato_puerta = (boolean) value.getData().get("puerta");
                                 boolean dato_iluminacion = (boolean) value.getData().get("iluminacion");
 
 
@@ -150,9 +157,12 @@ public class Tab1 extends Fragment implements MqttCallback {
                                 if (dato_iluminacion){
                                     iluminaciondb.setText("Encendido");
                                     estado_iluminacion = true;
+                                    imageIluminacion.setImageResource(R.drawable.sensor_luz);
+
                                 }else{
                                     iluminaciondb.setText("Apagado");
                                     estado_iluminacion = false;
+                                    imageIluminacion.setImageResource(R.drawable.sensor_luz_apagado);
                                 }
 
                             }
@@ -161,8 +171,6 @@ public class Tab1 extends Fragment implements MqttCallback {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void cambiarPuerta(View view) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference ref = db.collection("buzones").document("iuuL6GzS8k8uz042XkBy");
 
         if(estadoPuertaMQTT.equals("1")) {
             return;
@@ -189,24 +197,18 @@ public class Tab1 extends Fragment implements MqttCallback {
     }
 
     public void cambiarIluminacion(View view){
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference ref = db.collection("buzones").document("iuuL6GzS8k8uz042XkBy");
-
-        image = view.findViewById(R.id.image_iluminacion);
         if (estado_iluminacion){
-            estado_iluminacion = false;
             publicarMqtt("led", "0");
-            image.setImageResource(R.drawable.sensor_luz);
-            Map<String, Object> hopperUpdates = new HashMap<>();
-            hopperUpdates.put("iluminacion", true);
-            ref.update(hopperUpdates);
-        }else{
-            estado_iluminacion = true;
-            publicarMqtt("led", "1");
-            image.setImageResource(R.drawable.sensor_luz_apagado);
             Map<String, Object> hopperUpdates = new HashMap<>();
             hopperUpdates.put("iluminacion", false);
             ref.update(hopperUpdates);
+
+        }else{
+            publicarMqtt("led", "1");
+            Map<String, Object> hopperUpdates = new HashMap<>();
+            hopperUpdates.put("iluminacion", true);
+            ref.update(hopperUpdates);
+
         }
     }
 
@@ -275,32 +277,31 @@ public class Tab1 extends Fragment implements MqttCallback {
     @Override public void messageArrived(String topic, MqttMessage message)
             throws Exception {
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference ref = db.collection("buzones").document("iuuL6GzS8k8uz042XkBy");
-
         String payload = new String(message.getPayload());
         Log.d(TAG, "Recibiendo: " + topic + "->" + payload);
-
         System.out.println("Estado al recibir MQTT: " + message);
 
-        estadoPuertaMQTT = message.toString();
-
-        Map<String, Object> hopperUpdates = new HashMap<>();
-        hopperUpdates.put("estadoPuerta", estadoPuertaMQTT);
-        ref.update(hopperUpdates);
-
-        /*switch (estadoPuertaMQTT) {
-
-            case "0": //abierta
-                puertadb.setText("Abierta");
+        switch (topic) {
+            case topicRoot + "motor_estado": {
+                estadoPuertaMQTT = message.toString();
+                Map<String, Object> hopperUpdates = new HashMap<>();
+                hopperUpdates.put("estadoPuerta", estadoPuertaMQTT);
+                ref.update(hopperUpdates);
                 break;
-            case "1": //moviendose
-                puertadb.setText("Moviendose");
+            }
+            case topicRoot + "peso": {
+                Map<String, Object> hopperUpdates = new HashMap<>();
+                hopperUpdates.put("peso", payload);
+                ref.update(hopperUpdates);
                 break;
-            case "2": //cerrada
-                puertadb.setText("Cerrada");
+            }
+            case topicRoot + "led": {
+                Map<String, Object> hopperUpdates = new HashMap<>();
+                hopperUpdates.put("iluminacion", payload.equals("1"));
+                ref.update(hopperUpdates);
                 break;
-        }*/
+            }
+        }
 
     }
 

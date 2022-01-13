@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="5dp"
-    app:cardElevation="8dp"
-    android:layout_marginHorizontal="50dp"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="3dp"
+    android:layout_marginHorizontal="12dp"
     android:layout_marginVertical="10dp">
 
     <LinearLayout
@@ -17,7 +17,7 @@
         <ImageView
             android:id="@+id/productoImagen"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="180dp"
             android:scaleType="fitXY"
             android:src="@android:color/background_dark" />
 

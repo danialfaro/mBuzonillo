@@ -26,7 +26,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -79,7 +78,7 @@ public class EditProfile extends AppCompatActivity {
         profileChangeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CropImage.activity().setAspectRatio(1,1).start(EditProfile.this);
+                //CropImage.activity().setAspectRatio(1,1).start(EditProfile.this);
             }
         });
 
@@ -112,7 +111,7 @@ public class EditProfile extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
 
-        if(requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK && data != null){
+        /*if(requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK && data != null){
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             imageUri = result.getUri();
 
@@ -120,7 +119,7 @@ public class EditProfile extends AppCompatActivity {
         }
         else {
             Toast.makeText(this, "Error, Try again",Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
     private void uploadProfileImage(){
         final ProgressDialog progressDialog = new ProgressDialog(this);

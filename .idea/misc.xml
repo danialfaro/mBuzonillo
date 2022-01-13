@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/drawable-v24/camara1.xml" value="0.3828125" />
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/drawable-v24/ic_baseline_arrow_back_ios_24.xml" value="0.3828125" />
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/drawable-v24/puerta_cerrada.xml" value="0.3828125" />
@@ -27,9 +28,11 @@
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/fragment_gallery.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/fragment_home.xml" value="0.7034540859309183" />
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/fragment_slideshow.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/galeria_imagen.xml" value="0.21388888888888888" />
+        <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/galeria_imagen.xml" value="0.25" />
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/google_maps.xml" value="0.1" />
+        <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/item_galeria.xml" value="0.5871559633027523" />
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/item_paquete.xml" value="0.264" />
+        <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/itme_galeria.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/nav_header_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/tab1.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/MSI/AndroidStudioProjects/mBuzonillo/app/src/main/res/layout/tab2.xml" value="0.25" />
