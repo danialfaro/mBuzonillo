@@ -44,7 +44,7 @@ import java.util.Map;
 public class GaleriaImagenesActivity extends AppCompatActivity  implements MqttCallback {
 
 
-    private static MqttClient client;
+    //private static MqttClient client;
     private FloatingActionButton fab;
 
     private AdaptadorImagenes adaptador;
@@ -63,8 +63,9 @@ public class GaleriaImagenesActivity extends AppCompatActivity  implements MqttC
         adaptador = new AdaptadorImagenes(this, opciones); recyclerView.setAdapter(adaptador);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        conectarMqtt();
-        suscribirMqtt("camara_lista", this);
+        //conectarMqtt();
+        Tab1.conectarMqtt();
+        Tab1.suscribirMqtt("camara_lista", this);
 
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> {
@@ -76,7 +77,7 @@ public class GaleriaImagenesActivity extends AppCompatActivity  implements MqttC
             circularProgressDrawable.setStrokeCap(Paint.Cap.ROUND);
             circularProgressDrawable.start();
             //fab.setImageDrawable(circularProgressDrawable);
-            publicarMqtt("foto", "1");
+            Tab1.publicarMqtt("foto", "1");
             Toast.makeText(this, "Haciendo foto...", Toast.LENGTH_SHORT).show();
 
 
@@ -116,7 +117,7 @@ public class GaleriaImagenesActivity extends AppCompatActivity  implements MqttC
     }
 
     //MQTT
-    public static void conectarMqtt() {
+    /*public static void conectarMqtt() {
         try {
             Log.i(TAG, "Conectando al broker " + broker);
             client = new MqttClient(broker, clientId, new MemoryPersistence());
@@ -161,7 +162,7 @@ public class GaleriaImagenesActivity extends AppCompatActivity  implements MqttC
     public void onDestroy() {
         deconectarMqtt();
         super.onDestroy();
-    }
+    }*/
 
     //MQTT Callback
 

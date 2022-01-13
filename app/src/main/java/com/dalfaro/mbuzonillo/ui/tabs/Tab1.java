@@ -262,7 +262,7 @@ public class Tab1 extends Fragment implements MqttCallback {
     }
     @Override
     public void onDestroy() {
-        deconectarMqtt();
+        //deconectarMqtt();
         super.onDestroy();
     }
 
